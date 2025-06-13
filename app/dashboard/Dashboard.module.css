@@ -1,24 +1,26 @@
+/* Cleaned & Optimized Tip Card CSS */
+
 .card {
   width: 100%;
   max-height: 300px;
-  background: #65138d;
-  border:3px; 
-  border-color: #b998e8;
-  position: relative;
-  display: grid;
-  place-content: center;
   border-radius: 10px;
   overflow: hidden;
-  transition: max-height 0.6s ease-in-out;
   cursor: pointer;
-   box-shadow: 0 0 0px rgba(194, 133, 221, 0); /* Start invisible */
-  transition: box-shadow 0.4s ease-in-out;
+  display: grid;
+  place-content: center;
+  position: relative;
+  box-shadow: 0 0 0px rgba(194, 133, 221, 0);
+  transition:
+    max-height 0.6s ease-in-out,
+    background 0.3s ease-in-out,
+    color 0.3s ease-in-out,
+    box-shadow 0.4s ease-in-out;
 }
 
 .card:hover {
   max-height: 900px;
- box-shadow: 0 0 25px rgba(194, 133, 221, 0.8); /* Glow on hover */
   transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(194, 133, 221, 0.8);
 }
 
 .logo-main, .logo-second {
@@ -30,37 +32,24 @@
 }
 
 .logo-second {
-  padding-bottom: 10px;
   fill: none;
   stroke: #b998e8;
   stroke-width: 1px;
-}
-
-.bottomText {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 10px;
-  text-transform: uppercase;
-  padding: 0px 5px 0px 8px;
-  color: #c28bdb;
-  opacity: 0;
-  letter-spacing: 7px;
-  transition: all 0.5s ease-in-out;
+  padding-bottom: 10px;
 }
 
 .card:hover .bottomText {
-  letter-spacing: 3px;
   opacity: 1;
 }
 
 .content {
   transition: all 0.5s ease-in-out;
 }
+
 .logo {
   height: 35px;
+  min-width: 120px;
   position: relative;
-  min-width: 120px; /* allow space for full text */
   overflow: visible;
   transition: all 1s ease-in-out;
 }
@@ -75,18 +64,15 @@
   align-items: center;
   font-size: 1rem;
   font-weight: bold;
-  color: white;
-  opacity: 1;
   white-space: nowrap;
   overflow: visible;
-  text-overflow: unset;
   max-width: 100%;
+  opacity: 1;
   transition: opacity 0.4s ease-in-out;
 }
 
-
 .card:hover .logo1 {
-  opacity: 0; /* Disappear on hover */
+  opacity: 0;
 }
 
 .logo2 {
@@ -101,11 +87,10 @@
   top: 50%;
   transform: translate(-50%, -50%);
   margin-top: 30px;
-  color: #bd9f67;
   padding-left: 8px;
   font-size: 11px;
   opacity: 0;
-  white-space: nowrap; 
+  white-space: nowrap;
   transition: all 0.5s ease-in-out 0.5s;
 }
 
@@ -114,24 +99,149 @@
   letter-spacing: 1px;
 }
 
+/* Theme-specific classes */
+.cardLight {
+  background: #a567f7;
+  color: #e3dbed;
+  box-shadow: 0 0 25px rgba(194, 133, 221, 0.5);
+  border: 3px solid #5715b4;
+
+}
+
+.cardDark {
+  background: #310d5c;
+  color: #f3e8ff;
+  box-shadow: 0 0 25px rgba(86, 40, 120, 0.5);
+  border: 3px solid #b998e8;
+
+}
+.cardLight:hover {
+  background: #a567f7;
+}
+
+.cardDark:hover {
+  background: #3e0c66;
+}
+
+.tipTextLight {
+  color: #280543;
+  transition: color 0.4s ease-in-out;
+  font-weight: bold;
+}
+
+.tipTextDark {
+  color: #f3e8ff;
+  transition: color 0.4s ease-in-out;
+  font-weight: bold;
+}
+
 @keyframes trail {
   0% {
     background: linear-gradient(90deg, rgba(189, 159, 103, 0) 90%, rgb(189, 159, 103) 100%);
     opacity: 0;
   }
-
-  30% {
+  30%, 70% {
     background: linear-gradient(90deg, rgba(189, 159, 103, 0) 70%, rgb(189, 159, 103) 100%);
     opacity: 1;
   }
-
-  70% {
-    background: linear-gradient(90deg, rgba(189, 159, 103, 0) 70%, rgb(189, 159, 103) 100%);
-    opacity: 1;
-  }
-
   95% {
     background: linear-gradient(90deg, rgba(189, 159, 103, 0) 90%, rgb(189, 159, 103) 100%);
     opacity: 0;
   }
+}
+
+.metricCard {
+  width: 100%;
+  max-width: 300px;
+  padding: 20px;
+  background: #b28eee;
+  border: 6px solid #000;
+  box-shadow: 12px 12px 0 #000;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.metricCard:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 17px 17px 0 #000;
+}
+
+.metricCardDark {
+  background-color: #1f1f1f;
+  color: #f3e8ff;
+  border-color: #a855f7;
+  box-shadow: 12px 12px 0 #a855f7;
+}
+
+.metricCardDark:hover {
+  box-shadow: 17px 17px 0 #a855f7;
+}
+
+.metricCount {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.metricLabel {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.metricLabelDark {
+  color: #d1c4e9;
+}
+
+/* Dashboard.module.css */
+.cardFancy {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  background: rgb(106, 47, 148);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.cardFancy::before,
+.cardFancy::after {
+  position: absolute;
+  content: "";
+  width: 20%;
+  height: 20%;
+  background-color: rgb(201, 168, 230);
+  transition: all 0.5s;
+}
+
+.cardFancy::before {
+  top: 0;
+  right: 0;
+  border-radius: 0 15px 0 100%;
+}
+
+.cardFancy::after {
+  bottom: 0;
+  left: 0;
+  border-radius: 0 100% 0 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black; /* optional */
+  font-size: 20px; /* optional */
+}
+
+
+.cardFancy:hover::before,
+.cardFancy:hover::after {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+.cardFancy:hover::after {
+  content: "Click here!";
 }

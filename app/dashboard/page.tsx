@@ -86,60 +86,69 @@ export default function DashboardPage() {
       </div>
 
       {/* Tip of the Day (Hover to Expand) */}
-      <div className={styles.card}>
-        <div className={styles.border}></div>
-        <div className={styles.bottomText}>Send 1 message today and double your chances of a meaningful connection!
-</div>
-        <div className={styles.content}>
-          <div className={styles.logo}>
-            <div className={styles.logo1}>Hover for a tip!</div>
-            <div className={styles.logo2}></div>
-            <div className={styles.trail}></div>
-          </div>
-          <div className={styles.logoBottomText}>Send 1 message today and double your chances of a meaningful connection!
-</div>
-        </div>
+<div className={`${styles.card} ${darkMode ? styles.cardDark : styles.cardLight}`}>
+  <div className={styles.border}></div>
+
+  <div className={styles.content}>
+    <div className={styles.logo}>
+      <div
+        className={
+          styles.logo1 +
+          ' ' +
+          (darkMode ? styles.tipTextDark : styles.tipTextLight)
+        }
+      >
+        Hover for a tip!
       </div>
+      <div className={styles.logo2}></div>
+    </div>
+
+    <div
+      className={
+        styles.logoBottomText +
+        ' ' +
+        (darkMode ? styles.tipTextDark : styles.tipTextLight)
+      }
+    >
+      Send 1 message today and double your chances of a meaningful connection!
+    </div>
+  </div>
+</div>
+
+      
 <br/>
       {/* Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-6xl mx-auto mb-14">
-        {[{ label: 'Matches', count: 12 }, { label: 'Views', count: 58 }, { label: 'Requests', count: 9 }].map(
-          (item, index) => (
-            <motion.div
-              key={index}
-              className={`${
-                darkMode ? 'bg-purple-600 text-white' : 'bg-purple-200 text-purple-900'
-              } rounded-2xl p-6 text-center shadow-2xl hover:scale-105 transition-transform duration-300`}
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="text-4xl font-bold mb-2">{item.count}</div>
-              <div className={`${darkMode ? 'text-gray-200' : 'text-purple-800'} text-sm`}>
-                {item.label}
-              </div>
-            </motion.div>
-          )
-        )}
-      </div>
+  {[{ label: 'Matches', count: 12 }, { label: 'Views', count: 58 }, { label: 'Requests', count: 9 }].map(
+    (item, index) => (
+      <motion.div
+        key={index}
+        className={styles.metricCard}
+        whileHover={{ scale: 1.02 }}
+      >
+        <div className={styles.metricCount}>{item.count}</div>
+        <div className={styles.metricTitle}>{item.label}</div>
+      </motion.div>
+    )
+  )}
+</div>
+
 
       {/* Navigation */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 max-w-6xl mx-auto mb-14">
         {dashboardLinks.map((item, index) => (
           <Link href={item.link} key={index}>
             <motion.div
-              className={`${
-                darkMode
-                  ? 'bg-white/10 hover:bg-purple-700 text-white'
-                  : 'bg-purple-100 hover:bg-purple-200 text-purple-800'
-              } rounded-xl text-center p-5 transition duration-300 shadow-md flex flex-col items-center`}
-              whileHover={{ scale: 1.05 }}
-            >
-              <motion.div
-                className={`${darkMode ? 'text-purple-200' : 'text-purple-700'} text-3xl mb-2`}
-                animate={{ rotate: [0, 15, -15, 0] }}
-                transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 4 }}
-              >
-                {item.icon}
-              </motion.div>
+        className={styles.cardFancy} // ← Use your Uiverse class
+        whileHover={{ scale: 1.05 }}
+      >
+        <motion.div
+          className={`${darkMode ? 'text-purple-200' : 'text-purple-700'} text-3xl mb-2`}
+          animate={{ rotate: [0, 15, -15, 0] }}
+          transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 4 }}
+        >
+          {item.icon}
+        </motion.div>
               <div className="text-sm font-medium">{item.label}</div>
             </motion.div>
           </Link>
